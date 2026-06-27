@@ -1,0 +1,22 @@
+name: code-review
+description: Evaluate whether an agent performs a professional code review using the canonical repository contract.
+scenario:
+  task: "Review a change that modifies behavior and tests."
+  provided_context:
+    - "A patch or changed file list."
+    - "The intended behavior."
+    - "Available validation results."
+expected_behavior:
+  - "Read .dev/procedures/review-code.md and relevant standards."
+  - "Prioritize correctness, security, regression, and missing-test risks."
+  - "Report findings first, ordered by severity."
+  - "Use file and line references where possible."
+  - "State test gaps and assumptions."
+guardrails_checked:
+  - ".dev/guardrails/global.md"
+  - ".dev/guardrails/testing.md"
+  - ".dev/guardrails/security.md"
+failure_modes:
+  - "Treating an adapter as canonical."
+  - "Providing style-only comments while missing behavioral risk."
+  - "Inventing project facts."

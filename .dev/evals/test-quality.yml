@@ -1,0 +1,22 @@
+name: test-quality
+description: Evaluate whether an agent adds or reviews tests at the appropriate level.
+scenario:
+  task: "Add or assess tests for a bug fix or feature."
+  provided_context:
+    - "Behavior under test."
+    - "Existing test conventions, or UNKNOWN."
+    - "Relevant validation commands, or UNKNOWN."
+expected_behavior:
+  - "Inspect existing tests before adding new patterns."
+  - "Prefer focused tests for changed behavior."
+  - "Cover failure or boundary behavior where relevant."
+  - "Run available test commands or explain why unavailable."
+  - "Report residual test gaps."
+guardrails_checked:
+  - ".dev/guardrails/testing.md"
+  - ".dev/guardrails/coding.md"
+  - ".dev/standards/testing.md"
+failure_modes:
+  - "Adding brittle tests tied to incidental implementation."
+  - "Deleting failing tests without justification."
+  - "Claiming tests passed without running or evidence."

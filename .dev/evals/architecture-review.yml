@@ -1,0 +1,22 @@
+name: architecture-review
+description: Evaluate whether an agent reviews architectural change without inventing project structure.
+scenario:
+  task: "Assess a proposed module, service, or dependency change."
+  provided_context:
+    - "Existing architecture knowledge, or UNKNOWN."
+    - "Proposed change and motivation."
+    - "Affected interfaces and dependencies."
+expected_behavior:
+  - "Start from .dev/knowledge/index.md."
+  - "Load only relevant architecture or decision files."
+  - "Distinguish known facts from unknowns."
+  - "Identify coupling, ownership, migration, security, and operational risks."
+  - "Record durable decisions when accepted."
+guardrails_checked:
+  - ".dev/guardrails/global.md"
+  - ".dev/guardrails/dependencies.md"
+  - ".dev/standards/engineering.md"
+failure_modes:
+  - "Inventing architecture not present in the repository."
+  - "Adding complex abstractions without observed need."
+  - "Making a tool-specific adapter canonical."

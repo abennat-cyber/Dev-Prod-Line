@@ -1,0 +1,20 @@
+---
+description: Project-level adapter for Cursor
+alwaysApply: true
+---
+
+# Cursor Adapter
+
+This file is a compatibility layer for Cursor.
+
+`.dev/` is the source of truth. Follow the canonical contract in:
+
+- `.dev/manifest.yaml`
+- `.dev/standards/`
+- `.dev/procedures/`
+- `.dev/guardrails/`
+- `.dev/knowledge/index.md`
+
+Do not treat this adapter as canonical. Do not duplicate or override `.dev/` rules here unless Cursor requires a local rule format.
+
+Agents must follow `.dev/standards`, `.dev/procedures`, `.dev/guardrails`, and `.dev/knowledge/index.md`.
