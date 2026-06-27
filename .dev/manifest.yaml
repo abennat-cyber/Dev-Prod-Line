@@ -1,7 +1,7 @@
 schema_version: "1.0"
 canonical_root: ".dev"
 name: "vendor-agnostic-agentic-development-environment"
-status: "mvp"
+status: "advanced-contract"
 
 principles:
   - ".dev/ is the canonical engineering contract."
@@ -10,6 +10,7 @@ principles:
   - "scripts validate the contract."
   - "No adapter is canonical."
   - "Unknown project facts must be marked UNKNOWN."
+  - "Advanced agent features must remain vendor-neutral contract modules unless a repository explicitly adds a runtime adapter."
 
 adapter_policy:
   source_of_truth: ".dev"
@@ -21,6 +22,32 @@ adapter_policy:
     - "Duplicating canonical rules unless required by the target tool."
     - "Overriding .dev standards from an adapter."
     - "Locking the repository to a specific AI vendor or product."
+
+advanced_features:
+  model_routing:
+    status: "enabled"
+    canonical_files:
+      - ".dev/model-routing/README.md"
+      - ".dev/model-routing/policy.yaml"
+      - ".dev/model-routing/evaluation-matrix.yaml"
+  token_compression:
+    status: "enabled"
+    canonical_files:
+      - ".dev/token-compression/README.md"
+      - ".dev/token-compression/policy.yaml"
+      - ".dev/token-compression/context-ledger.md"
+  marketplace_plugins:
+    status: "enabled"
+    canonical_files:
+      - ".dev/marketplace/README.md"
+      - ".dev/marketplace/plugin-contract.yaml"
+      - ".dev/marketplace/registry.yaml"
+  multi_agent_delegation:
+    status: "enabled"
+    canonical_files:
+      - ".dev/delegation/README.md"
+      - ".dev/delegation/protocol.yaml"
+      - ".dev/delegation/roles.yaml"
 
 required_files:
   build:
@@ -35,6 +62,7 @@ required_files:
     - ".dev/standards/documentation.md"
     - ".dev/standards/observability.md"
     - ".dev/standards/ai-assisted-engineering.md"
+    - ".dev/standards/advanced-agent-features.md"
   procedures:
     - ".dev/procedures/add-feature.md"
     - ".dev/procedures/fix-bug.md"
@@ -44,6 +72,10 @@ required_files:
     - ".dev/procedures/update-docs.md"
     - ".dev/procedures/investigate-incident.md"
     - ".dev/procedures/release-change.md"
+    - ".dev/procedures/route-model.md"
+    - ".dev/procedures/compress-context.md"
+    - ".dev/procedures/manage-marketplace-plugin.md"
+    - ".dev/procedures/delegate-agent-work.md"
   guardrails:
     - ".dev/guardrails/global.md"
     - ".dev/guardrails/coding.md"
@@ -52,6 +84,10 @@ required_files:
     - ".dev/guardrails/generated-files.md"
     - ".dev/guardrails/data-and-privacy.md"
     - ".dev/guardrails/dependencies.md"
+    - ".dev/guardrails/model-routing.md"
+    - ".dev/guardrails/token-compression.md"
+    - ".dev/guardrails/marketplace-plugins.md"
+    - ".dev/guardrails/multi-agent-delegation.md"
   knowledge:
     - ".dev/knowledge/index.md"
     - ".dev/knowledge/architecture.md"
@@ -60,11 +96,29 @@ required_files:
     - ".dev/knowledge/deployment.md"
     - ".dev/knowledge/decisions.md"
     - ".dev/knowledge/runbooks.md"
+    - ".dev/knowledge/agent-platform.md"
   skills:
     - ".dev/skills/build-agentic-dev-environment/skill.md"
     - ".dev/skills/add-feature/skill.md"
     - ".dev/skills/review-code/skill.md"
     - ".dev/skills/update-knowledge/skill.md"
+    - ".dev/skills/route-model/skill.md"
+    - ".dev/skills/compress-context/skill.md"
+    - ".dev/skills/manage-marketplace-plugin/skill.md"
+    - ".dev/skills/delegate-agent-work/skill.md"
+  advanced_features:
+    - ".dev/model-routing/README.md"
+    - ".dev/model-routing/policy.yaml"
+    - ".dev/model-routing/evaluation-matrix.yaml"
+    - ".dev/token-compression/README.md"
+    - ".dev/token-compression/policy.yaml"
+    - ".dev/token-compression/context-ledger.md"
+    - ".dev/marketplace/README.md"
+    - ".dev/marketplace/plugin-contract.yaml"
+    - ".dev/marketplace/registry.yaml"
+    - ".dev/delegation/README.md"
+    - ".dev/delegation/protocol.yaml"
+    - ".dev/delegation/roles.yaml"
   workflows:
     - ".dev/workflows/README.md"
   evals:
@@ -72,6 +126,10 @@ required_files:
     - ".dev/evals/code-review.yml"
     - ".dev/evals/test-quality.yml"
     - ".dev/evals/architecture-review.yml"
+    - ".dev/evals/model-routing.yml"
+    - ".dev/evals/token-compression.yml"
+    - ".dev/evals/marketplace-plugin-review.yml"
+    - ".dev/evals/multi-agent-delegation.yml"
   adapters:
     - "adapters/codex/AGENTS.md"
     - "adapters/claude/CLAUDE.md"
@@ -84,6 +142,7 @@ required_files:
     - "scripts/sync-agent-adapters.sh"
     - "scripts/check-docs-drift.sh"
     - "scripts/check-generated-files.sh"
+    - "scripts/check-advanced-agent-features.sh"
 
 validation:
   command: "scripts/validate-agentic-env.sh"

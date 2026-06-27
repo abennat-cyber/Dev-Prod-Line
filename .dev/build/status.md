@@ -4,7 +4,7 @@ Last updated: 2026-06-27
 
 ## Current phase
 
-- Phase: 10 - Finalization
+- Phase: 11 - Advanced agent features
 - Status: Complete
 
 ## Phase status
@@ -22,6 +22,7 @@ Last updated: 2026-06-27
 | 8 | Validation and drift control | Complete | Four MVP validation and drift-control scripts created. |
 | 9 | Evals | Complete | Three vendor-neutral evals created. |
 | 10 | Finalization | Complete | Validation passed; build records updated. |
+| 11 | Advanced agent features | Complete | Model routing, token compression, marketplace plugins, and multi-agent delegation implemented as vendor-neutral contract modules. |
 
 ## Validation result
 
@@ -29,6 +30,7 @@ Last updated: 2026-06-27
 - `scripts/check-docs-drift.sh`: PASS
 - `scripts/check-generated-files.sh`: PASS with conservative MVP scan and TODO for project-specific generated-file rules.
 - `scripts/sync-agent-adapters.sh --check`: PASS
+- Advanced feature validation: PASS.
 
 ## Notes
 

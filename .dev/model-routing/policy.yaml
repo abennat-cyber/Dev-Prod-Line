@@ -1,0 +1,59 @@
+schema_version: "1.0"
+status: "enabled"
+canonical_root: ".dev/model-routing"
+
+principles:
+  - "Route by task requirements, not by vendor preference."
+  - "Prefer the smallest capable model class."
+  - "Escalate capability only when risk, complexity, context, or validation need requires it."
+  - "Adapters translate capability profiles to concrete tools or models."
+  - "Never make a provider-specific model canonical."
+
+capability_profiles:
+  fast_low_risk:
+    purpose: "Small, reversible, low-risk edits or summaries."
+    requirements:
+      reasoning: "low"
+      context_window: "small"
+      tool_use: "optional"
+      validation: "light"
+  standard_development:
+    purpose: "Typical coding, documentation, and repository maintenance work."
+    requirements:
+      reasoning: "medium"
+      context_window: "medium"
+      tool_use: "required"
+      validation: "standard"
+  high_complexity:
+    purpose: "Architecture, cross-module changes, security-sensitive work, or ambiguous tasks."
+    requirements:
+      reasoning: "high"
+      context_window: "large"
+      tool_use: "required"
+      validation: "strong"
+  review_and_safety:
+    purpose: "Code review, security review, release risk review, and incident analysis."
+    requirements:
+      reasoning: "high"
+      context_window: "medium"
+      tool_use: "required"
+      validation: "evidence_backed"
+
+routing_inputs:
+  - task_type
+  - risk_level
+  - context_size
+  - security_sensitivity
+  - required_tools
+  - validation_needs
+  - user_constraints
+
+decision_record_required_when:
+  - "Routing to high_complexity."
+  - "Routing to review_and_safety for security-sensitive changes."
+  - "Overriding a default profile."
+  - "Using a provider-specific adapter mapping."
+
+fallback:
+  default_profile: "standard_development"
+  unavailable_capability_action: "ask_user_or_use_lower_risk_read_only_mode"

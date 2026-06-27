@@ -1,0 +1,14 @@
+schema_version: "1.0"
+status: "enabled"
+
+policy:
+  default_state: "unapproved"
+  unapproved_plugin_action: "do_not_use"
+  registry_is_canonical: true
+  adapter_plugin_lists_are_canonical: false
+
+approved_plugins: []
+
+pending_review: []
+
+disabled_plugins: []

@@ -10,6 +10,7 @@ AI tools are adapters. They may read and translate this contract, but they do no
 - `adapters/` contains thin compatibility files for specific AI tools.
 - `agents` execute the contract by following the relevant standards, procedures, guardrails, and knowledge entry points.
 - `scripts` validate the contract and check for drift.
+- Advanced modules define model routing, token compression, marketplace plugins, and multi-agent delegation without making any vendor canonical.
 
 ## Entry Points
 
@@ -18,6 +19,15 @@ AI tools are adapters. They may read and translate this contract, but they do no
 - Select one procedure from `.dev/procedures/` for the task at hand.
 - Apply all relevant hard constraints from `.dev/guardrails/`.
 - Validate with `scripts/validate-agentic-env.sh`.
+
+## Advanced Modules
+
+- Model routing: `.dev/model-routing/`
+- Token compression: `.dev/token-compression/`
+- Marketplace plugins: `.dev/marketplace/`
+- Multi-agent delegation: `.dev/delegation/`
+
+Validate advanced modules with `scripts/check-advanced-agent-features.sh`.
 
 ## Repository Facts
 

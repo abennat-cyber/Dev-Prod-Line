@@ -1,0 +1,41 @@
+schema_version: "1.0"
+status: "enabled"
+
+role_catalog:
+  implementation_specialist:
+    purpose: "Implement bounded code or documentation changes."
+    allowed_outputs:
+      - "patch proposal"
+      - "implementation notes"
+      - "validation notes"
+  code_reviewer:
+    purpose: "Review changes for defects, regressions, and missing tests."
+    allowed_outputs:
+      - "findings"
+      - "risk assessment"
+      - "test gaps"
+  security_reviewer:
+    purpose: "Assess security, privacy, dependency, and permission risk."
+    allowed_outputs:
+      - "security findings"
+      - "risk classification"
+      - "mitigation recommendations"
+  documentation_specialist:
+    purpose: "Update or review docs and knowledge files."
+    allowed_outputs:
+      - "documentation patch proposal"
+      - "drift notes"
+      - "unknown facts"
+  validation_specialist:
+    purpose: "Run or design validation checks."
+    allowed_outputs:
+      - "commands run"
+      - "results"
+      - "blockers"
+
+default_lead_responsibilities:
+  - "Keep user-facing scope coherent."
+  - "Avoid destructive changes."
+  - "Reject unverified delegate claims."
+  - "Preserve current user instructions."
+  - "Run final validation."

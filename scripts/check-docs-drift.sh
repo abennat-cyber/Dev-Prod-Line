@@ -22,7 +22,9 @@ check_contains() {
 }
 
 check_contains ".dev/README.md" "\.dev/.*canonical" ".dev README should state that .dev/ is canonical"
+check_contains ".dev/README.md" "Advanced modules" ".dev README should list advanced modules"
 check_contains ".dev/knowledge/index.md" "MUST NOT load every knowledge file" "knowledge index should keep lazy-loading rule"
+check_contains ".dev/manifest.yaml" "advanced_features" "manifest should declare advanced feature files"
 
 for file in \
   "adapters/codex/AGENTS.md" \

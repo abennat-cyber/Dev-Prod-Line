@@ -54,7 +54,7 @@ Use when a repository needs a professional agentic development environment that 
 - Do not make destructive changes.
 - Do not overwrite existing files without preserving their content.
 - Do not invent project-specific architecture.
-- Do not implement model routing, token compression, marketplace plugins, or complex multi-agent delegation in the MVP.
+- Implement model routing, token compression, marketplace plugins, and multi-agent delegation only as vendor-neutral contract modules unless the repository explicitly adds runtime adapters.
 - Do not make any adapter canonical.
 
 ## Validation
@@ -62,6 +62,7 @@ Use when a repository needs a professional agentic development environment that 
 - Run `scripts/validate-agentic-env.sh`.
 - Confirm required files exist.
 - Confirm adapters state that `.dev/` is the source of truth.
+- Confirm advanced feature modules pass `scripts/check-advanced-agent-features.sh` when present.
 - Confirm validation report is generated.
 
 ## Related Files

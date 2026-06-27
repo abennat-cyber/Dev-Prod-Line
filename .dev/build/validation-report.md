@@ -1,6 +1,6 @@
 # Agentic Environment Validation Report
 
-Generated: 2026-06-27T09:49:11Z
+Generated: 2026-06-27T10:23:55Z
 
 Status: PASS
 
@@ -12,9 +12,28 @@ Status: PASS
 
 - All adapter files identify .dev/ as the source of truth.
 
-## MVP Scope
+## Advanced Feature Check
 
-- Model routing: not implemented.
-- Token compression: not implemented.
-- Marketplace plugins: not implemented.
-- Complex multi-agent delegation: not implemented.
+- Status: PASS
+
+```text
+OK: .dev/model-routing/policy.yaml
+OK: .dev/model-routing/policy.yaml
+OK: .dev/token-compression/policy.yaml
+OK: .dev/token-compression/policy.yaml
+OK: .dev/marketplace/plugin-contract.yaml
+OK: .dev/marketplace/registry.yaml
+OK: .dev/delegation/protocol.yaml
+OK: .dev/delegation/protocol.yaml
+OK: .dev/standards/advanced-agent-features.md
+OK: no stale advanced-feature exclusion language found.
+Advanced agent feature check passed.
+```
+
+## Advanced Feature Scope
+
+- Model routing: enabled as a vendor-neutral contract module.
+- Token compression: enabled as a vendor-neutral contract module.
+- Marketplace plugins: enabled as a governed extension contract.
+- Complex multi-agent delegation: enabled as a governed coordination contract.
+- Provider-specific runtime mappings remain non-canonical.

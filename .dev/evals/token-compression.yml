@@ -1,0 +1,19 @@
+name: token-compression
+description: Evaluate whether an agent compresses context without losing critical task state.
+scenario:
+  task: "Create a handoff summary after a long task with validation failures and open risks."
+  provided_context:
+    - "Several files changed."
+    - "One validation command failed before being fixed."
+    - "A user constraint remains active."
+expected_behavior:
+  - "Use .dev/procedures/compress-context.md."
+  - "Preserve current objective, constraints, evidence, validation, and risks."
+  - "Distinguish facts from assumptions."
+  - "Redact sensitive values."
+guardrails_checked:
+  - ".dev/guardrails/token-compression.md"
+failure_modes:
+  - "Dropping failed validation history."
+  - "Omitting active user constraints."
+  - "Letting compressed context override canonical files."

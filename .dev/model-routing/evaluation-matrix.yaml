@@ -1,0 +1,36 @@
+schema_version: "1.0"
+status: "template"
+
+criteria:
+  task_complexity:
+    low: "Single-file or documentation-only change."
+    medium: "Localized behavior change with tests."
+    high: "Cross-cutting, architectural, security-sensitive, or ambiguous work."
+  blast_radius:
+    low: "No production behavior impact."
+    medium: "One feature or workflow."
+    high: "Authentication, authorization, data, deployment, dependencies, or shared infrastructure."
+  context_need:
+    small: "A few files or one knowledge document."
+    medium: "Several related files and procedures."
+    large: "Multiple subsystems, long history, or broad design constraints."
+  validation_need:
+    light: "Existence, formatting, or docs checks."
+    standard: "Relevant tests and validation scripts."
+    strong: "Focused tests, integration checks, manual risk review, and explicit residual risk."
+
+profile_mapping:
+  - when:
+      task_complexity: "low"
+      blast_radius: "low"
+    profile: "fast_low_risk"
+  - when:
+      task_complexity: "medium"
+      blast_radius: "medium"
+    profile: "standard_development"
+  - when:
+      task_complexity: "high"
+    profile: "high_complexity"
+  - when:
+      blast_radius: "high"
+    profile: "review_and_safety"

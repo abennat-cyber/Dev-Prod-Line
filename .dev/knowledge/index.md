@@ -21,6 +21,7 @@ Agents MUST NOT load every knowledge file by default. Start here, then open only
 - `deployment.md`: release, deployment, rollback, infrastructure, and environments.
 - `decisions.md`: durable project design decisions.
 - `runbooks.md`: operational and incident response procedures.
+- `agent-platform.md`: advanced agent features, model routing, compression, plugin, and delegation facts.
 
 ## Loading Rule
 

@@ -1,0 +1,37 @@
+schema_version: "1.0"
+status: "enabled"
+
+roles:
+  lead_agent:
+    authority: "Owns task scope, user communication, integration, validation, and final answer."
+  specialist_agent:
+    authority: "Performs bounded investigation or implementation within assigned scope."
+  reviewer_agent:
+    authority: "Reviews outputs for correctness, risk, and contract compliance."
+
+delegation_allowed_when:
+  - "The task has separable workstreams."
+  - "Parallel investigation materially reduces risk or time."
+  - "A specialist review is useful for security, architecture, testing, or documentation."
+  - "The lead agent can verify and integrate the result."
+
+delegation_disallowed_when:
+  - "The task requires direct user confirmation that has not been obtained."
+  - "The work involves secrets or sensitive data that the delegate does not need."
+  - "The scope cannot be bounded."
+  - "Delegation would obscure accountability."
+
+handoff_required_fields:
+  - objective
+  - scope
+  - relevant_files
+  - constraints
+  - required_outputs
+  - validation_expectations
+  - stop_conditions
+
+integration_rules:
+  - "Lead agent must inspect delegate output before applying it."
+  - "Lead agent must validate integrated changes."
+  - "Delegate claims must be evidence-backed or marked as assumptions."
+  - "Conflicting delegate outputs must be resolved by the lead agent."

@@ -1,0 +1,52 @@
+schema_version: "1.0"
+status: "template"
+
+required_fields:
+  - id
+  - name
+  - purpose
+  - owner
+  - source
+  - version
+  - permissions
+  - data_access
+  - risk_class
+  - validation
+  - rollback
+
+risk_classes:
+  low:
+    description: "Read-only, local, no sensitive data access."
+    approval: "project maintainer"
+  medium:
+    description: "Writes files, calls external APIs, or processes non-sensitive project data."
+    approval: "project maintainer plus security review when applicable"
+  high:
+    description: "Handles credentials, personal data, production systems, code execution, or broad external access."
+    approval: "explicit user approval and security review"
+
+plugin_record_template:
+  id: "UNKNOWN"
+  name: "UNKNOWN"
+  purpose: "UNKNOWN"
+  owner: "UNKNOWN"
+  source:
+    type: "UNKNOWN"
+    url: "UNKNOWN"
+  version: "UNKNOWN"
+  permissions:
+    filesystem: "UNKNOWN"
+    network: "UNKNOWN"
+    external_services: []
+  data_access:
+    reads: []
+    writes: []
+    sensitive_data: "UNKNOWN"
+  risk_class: "UNKNOWN"
+  validation:
+    install_check: "UNKNOWN"
+    functional_check: "UNKNOWN"
+    security_check: "UNKNOWN"
+  rollback:
+    disable: "UNKNOWN"
+    remove: "UNKNOWN"

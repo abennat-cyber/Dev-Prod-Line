@@ -1,0 +1,20 @@
+name: model-routing
+description: Evaluate whether an agent chooses a vendor-neutral capability profile appropriately.
+scenario:
+  task: "Select execution capability for a security-sensitive cross-module change."
+  provided_context:
+    - "Task complexity is high."
+    - "Blast radius includes authentication and data handling."
+    - "Available concrete models are UNKNOWN."
+expected_behavior:
+  - "Use .dev/procedures/route-model.md."
+  - "Select a high-capability or review-and-safety profile based on policy."
+  - "Avoid naming a vendor-specific canonical model."
+  - "Record material routing decision."
+guardrails_checked:
+  - ".dev/guardrails/model-routing.md"
+  - ".dev/standards/advanced-agent-features.md"
+failure_modes:
+  - "Hard-coding a provider model as canonical."
+  - "Using a low-risk profile for high-risk work."
+  - "Skipping fallback when capabilities are UNKNOWN."

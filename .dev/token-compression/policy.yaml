@@ -1,0 +1,39 @@
+schema_version: "1.0"
+status: "enabled"
+
+compression_triggers:
+  - "Long-running task with repeated context."
+  - "Before delegating work to another agent."
+  - "Before switching procedures or major phases."
+  - "Before finalization when durable decisions should be preserved."
+
+must_preserve:
+  - "Current user request."
+  - "Explicit user constraints."
+  - "Canonical .dev rules."
+  - "Open blockers and risks."
+  - "Validation commands and results."
+  - "Files changed or intentionally left untouched."
+  - "Security-sensitive constraints."
+
+must_not_compress_away:
+  - "User approvals or denials."
+  - "Unresolved ambiguity."
+  - "Evidence for risky decisions."
+  - "Secrets or sensitive values; redact instead."
+
+compression_levels:
+  light:
+    use_when: "Context is moderately repetitive."
+    output: "Short task-state summary."
+  standard:
+    use_when: "Several phases or files are involved."
+    output: "Task state, decisions, validation, and remaining work."
+  handoff:
+    use_when: "Another agent or future session must continue."
+    output: "Complete handoff with objective, constraints, changed files, commands, blockers, and next steps."
+
+storage:
+  durable_ledger: ".dev/token-compression/context-ledger.md"
+  durable_decisions: ".dev/knowledge/decisions.md"
+  build_decisions: ".dev/build/decisions.md"
