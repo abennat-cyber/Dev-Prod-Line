@@ -1,0 +1,23 @@
+schema_version: "1.0"
+status: "enabled"
+
+classes:
+  public:
+    description: "Information intended for public release."
+    allowed_in_prompts: true
+    allowed_in_logs: true
+  internal:
+    description: "Repository or organization information not intended for public release."
+    allowed_in_prompts: true
+    allowed_in_logs: true
+  confidential:
+    description: "Sensitive business, customer, security, or operational information."
+    allowed_in_prompts: "only_with_user_approval"
+    allowed_in_logs: "redacted_only"
+  restricted:
+    description: "Secrets, credentials, regulated data, private keys, and production personal data."
+    allowed_in_prompts: false
+    allowed_in_logs: false
+
+default_class: "internal"
+unknown_class_action: "treat_as_confidential"

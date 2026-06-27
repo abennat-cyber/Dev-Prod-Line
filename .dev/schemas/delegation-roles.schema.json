@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Delegation Roles",
+  "type": "object",
+  "required": ["schema_version", "status", "role_catalog", "default_lead_responsibilities"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "role_catalog": { "type": "object", "minProperties": 1 },
+    "default_lead_responsibilities": { "type": "array", "items": { "type": "string" } }
+  }
+}

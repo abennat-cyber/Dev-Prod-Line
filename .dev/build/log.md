@@ -143,3 +143,50 @@
 - Ran `scripts/check-docs-drift.sh`: PASS.
 - Ran `scripts/check-advanced-agent-features.sh`: PASS.
 - Ran `scripts/check-generated-files.sh`: PASS with conservative scan and existing TODO for project-specific generated-file rules.
+
+## 2026-06-27 - Phase 12 Started
+
+- Started public distribution hardening based on contributor-readiness feedback.
+- Scope: token-efficiency foundation, validation hardening, public project hygiene, CI, and distribution installer.
+
+## 2026-06-27 - Phase 12 Completed
+
+- Added Apache-2.0 license, contributing guide, code of conduct, security policy, issue templates, pull request template, and GitHub Actions validation workflow.
+- Added `.dev/context-map.yaml` and `scripts/check-token-budget.sh`.
+- Reset `.dev/token-compression/context-ledger.md` to a reusable public template with active-session leak checks.
+- Added JSON schemas under `.dev/schemas/` and local-soft/CI-strict validation in `scripts/check-schemas.sh`.
+- Added lightweight Markdown link validation in `scripts/check-markdown-links.sh`.
+- Added `scripts/init-dev-contract.sh` for bootstrapping the contract into another repository without overwriting by default.
+- Updated `scripts/validate-agentic-env.sh` to orchestrate advanced, token, schema, and link checks.
+- Smoke-tested `scripts/init-dev-contract.sh` against a temporary target repository; the copied contract validated successfully.
+- Verified strict schema validation in a temporary Python environment with `pyyaml` and `jsonschema`.
+
+## 2026-06-27 - Phase 13 Started
+
+- Started industrial quality hardening without increasing agent prompt context.
+- Scope: manifest-driven validation, deterministic reports, Makefile entry points, broader schema coverage, contract tests, installer safety flags, versioning, and data classification.
+
+## 2026-06-27 - Phase 13 Completed
+
+- Reworked `scripts/validate-agentic-env.sh` to read required files from `.dev/manifest.yaml` instead of duplicating the list.
+- Removed timestamp output from validation reports to reduce noisy diffs.
+- Added `.dev/VERSION`, `scripts/check-version.sh`, and a `1.1.0` changelog entry.
+- Added `Makefile` targets for `validate`, `schemas`, `test-contracts`, and `ci`.
+- Added `.dev/security/data-classification.yaml`.
+- Added schemas for routing matrix, compression policy, plugin contract, delegation protocol, delegation roles, evals, and data classification.
+- Extended `scripts/check-schemas.sh` to validate all structured contract files and evals.
+- Added `scripts/test-contract-validation.sh` with negative fixtures for missing adapters, stale context ledgers, broken links, and token budget violations.
+- Hardened `scripts/init-dev-contract.sh` with `--dry-run`, `--check`, `--allow-non-git`, backup summaries, and a Git repository guard.
+- Ran `make validate`: PASS.
+- Ran `make test-contracts`: PASS.
+- Ran strict schema validation in a temporary Python environment with `pyyaml` and `jsonschema`: PASS.
+- Ran `bash -n scripts/*.sh`: PASS.
+
+## 2026-06-27 - Phase 12 Follow-up (review hardening)
+
+- Replaced the paraphrased `LICENSE` with the verbatim upstream Apache-2.0 text (restores the Section 3 patent-termination clause and full Section 8 that the paraphrase had dropped); kept the real copyright in the appendix.
+- Added `NOTICE` with the project attribution required by Apache-2.0 clause 4(d).
+- Added `CHANGELOG.md` with a contract-versioning policy tied to `manifest.yaml`'s `schema_version`.
+- Refactored the context-ledger hygiene check from brittle prose regexes to a structured `session_state: none` sentinel.
+- Registered `NOTICE` and `CHANGELOG.md` in `manifest.yaml` community files and in `validate-agentic-env.sh` required files.
+- Re-ran the full suite: validation PASS, strict schema PASS (manifest, context-map, marketplace registry, model-routing policy), token budget 2544/3200 PASS, markdown links PASS.

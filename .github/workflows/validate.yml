@@ -1,0 +1,38 @@
+name: Validate Contract
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install validation dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+          python3 -m pip install --upgrade pip
+          python3 -m pip install pyyaml jsonschema
+
+      - name: Shellcheck scripts
+        run: shellcheck scripts/*.sh
+
+      - name: Validate agentic environment
+        env:
+          CI: "true"
+        run: |
+          scripts/validate-agentic-env.sh
+          scripts/check-docs-drift.sh
+          scripts/check-token-budget.sh
+          scripts/check-version.sh
+          scripts/check-schemas.sh
+          scripts/check-markdown-links.sh
+          scripts/check-advanced-agent-features.sh
+          scripts/check-generated-files.sh
+          scripts/test-contract-validation.sh

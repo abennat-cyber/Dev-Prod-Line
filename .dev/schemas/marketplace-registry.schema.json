@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marketplace Registry",
+  "type": "object",
+  "required": ["schema_version", "status", "policy", "approved_plugins", "pending_review", "disabled_plugins"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "policy": {
+      "type": "object",
+      "required": ["default_state", "unapproved_plugin_action", "registry_is_canonical", "adapter_plugin_lists_are_canonical"],
+      "properties": {
+        "default_state": { "type": "string" },
+        "unapproved_plugin_action": { "type": "string" },
+        "registry_is_canonical": { "type": "boolean" },
+        "adapter_plugin_lists_are_canonical": { "type": "boolean" }
+      }
+    },
+    "approved_plugins": { "type": "array" },
+    "pending_review": { "type": "array" },
+    "disabled_plugins": { "type": "array" }
+  }
+}

@@ -42,3 +42,43 @@
 
 - Decision: `.dev/marketplace/registry.yaml` is the canonical list of approved plugins.
 - Reason: Adapter-specific plugin availability is not sufficient evidence that a plugin is approved for repository work.
+
+### 2026-06-27 - Use Apache-2.0 for public distribution
+
+- Decision: License the repository under Apache-2.0.
+- Reason: The scaffold is intended for public and enterprise adoption, and Apache-2.0 includes an explicit patent grant.
+
+### 2026-06-27 - Enforce rigor outside the context window
+
+- Decision: Put token budgets, schemas, link checks, and CI validation in scripts and structured files instead of repeated prompt text.
+- Reason: Deterministic validation reduces context load and makes contribution checks reproducible.
+
+### 2026-06-27 - Local-soft and CI-strict schema validation
+
+- Decision: Local schema validation warns and skips when optional Python modules are unavailable, while CI installs dependencies and enforces schemas strictly.
+- Reason: Contributors should be able to run lightweight local checks without setup friction, but invalid configs should not merge.
+
+### 2026-06-27 - Manifest-driven validation
+
+- Decision: `scripts/validate-agentic-env.sh` reads required file paths from `.dev/manifest.yaml`.
+- Reason: The manifest must remain the single source of truth and validator duplication creates drift.
+
+### 2026-06-27 - Deterministic validation reports
+
+- Decision: Validation reports omit run timestamps.
+- Reason: Timestamp-only diffs create contributor noise without improving contract quality.
+
+### 2026-06-27 - Contract tests validate failure modes
+
+- Decision: Add `scripts/test-contract-validation.sh` with intentionally broken temporary fixtures.
+- Reason: Industrial validation must prove checks fail for known contract violations, not only pass on the happy path.
+
+### 2026-06-27 - LICENSE must be verbatim Apache-2.0
+
+- Decision: Ship the unmodified upstream Apache-2.0 text and place attribution in `NOTICE`, rather than a paraphrased license body.
+- Reason: A reworded license is not OSI-recognized as Apache-2.0 and silently dropped the Section 3 patent-termination clause, defeating the patent-grant rationale for choosing Apache-2.0.
+
+### 2026-06-27 - Ledger hygiene via structured sentinel
+
+- Decision: Guard the committed context ledger with a `session_state: none` sentinel instead of matching specific leaked prose.
+- Reason: Prose regexes are the brittle text-matching the schema/CI work is meant to retire; a sentinel is deterministic and forward-compatible.

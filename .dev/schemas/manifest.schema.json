@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dev Contract Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "canonical_root",
+    "name",
+    "status",
+    "principles",
+    "adapter_policy",
+    "advanced_features",
+    "required_files",
+    "validation"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "canonical_root": { "const": ".dev" },
+    "name": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "minLength": 1 },
+    "principles": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "adapter_policy": {
+      "type": "object",
+      "required": ["source_of_truth", "adapter_role", "allowed", "disallowed"],
+      "properties": {
+        "source_of_truth": { "const": ".dev" },
+        "adapter_role": { "type": "string" },
+        "allowed": { "type": "array", "items": { "type": "string" } },
+        "disallowed": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "advanced_features": { "type": "object" },
+    "required_files": { "type": "object" },
+    "validation": {
+      "type": "object",
+      "required": ["command", "report"],
+      "properties": {
+        "command": { "type": "string" },
+        "report": { "type": "string" }
+      }
+    }
+  }
+}

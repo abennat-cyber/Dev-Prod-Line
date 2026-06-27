@@ -1,23 +1,26 @@
 # Context Ledger
 
+<!-- session_state: none -->
+
 Use this ledger only for durable compressed context that helps future agents continue work accurately.
+
+This file is intentionally a clean template for public reuse. Do not commit active session state, transient objectives, or phase-specific implementation notes.
+
+The `session_state: none` marker above MUST remain `none` in committed code. While compressing live context during a session, agents may set it to `active` in their working copy, but a committed ledger with `session_state: active` (or a missing marker) fails validation.
 
 ## Current Compressed State
 
-- Objective: Implement advanced agent features as vendor-neutral `.dev/` contract modules.
-- Constraints:
-  - `.dev/` remains canonical.
-  - Adapters remain compatibility layers.
-  - Provider-specific runtime mappings are non-canonical.
-  - Project facts unrelated to the agentic environment remain `UNKNOWN`.
-- Current status: Phase 11 in progress.
-- Open risks:
-  - No real application code exists, so advanced features are contract-level rather than runtime-integrated.
-  - Available model inventory and marketplace installation mechanism are `UNKNOWN`.
+- Objective: `UNKNOWN`
+- Constraints: `UNKNOWN`
+- Current status: `UNKNOWN`
+- Open risks: `UNKNOWN`
+- Validation state: `UNKNOWN`
 
 ## Ledger Entries
 
-### 2026-06-27 - Advanced Features Start
+### YYYY-MM-DD - Entry Title
 
-- Summary: User requested model routing, token compression, marketplace plugins, and complex multi-agent delegation.
-- Decision: Implement as canonical contract modules with policies, guardrails, procedures, skills, evals, and validation.
+- Summary: `UNKNOWN`
+- Decisions: `UNKNOWN`
+- Evidence: `UNKNOWN`
+- Open questions: `UNKNOWN`

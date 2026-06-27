@@ -20,6 +20,9 @@ No adapter is canonical. The repository defines the standard; tools only transla
 - Canonical `.dev/` contract with manifest, standards, procedures, guardrails, knowledge, skills, evals, and build records.
 - Thin adapter files for Codex, Claude, Cursor, GitHub Copilot, ChatGPT, and generic agents.
 - Validation and drift-control scripts.
+- Token budget and eager/lazy context controls.
+- JSON schemas with local-soft and CI-strict validation.
+- Public contribution and security docs.
 - Vendor-neutral advanced modules for:
   - model routing
   - token compression
@@ -42,9 +45,12 @@ No adapter is canonical. The repository defines the standard; tools only transla
   marketplace/                   # Plugin contract and approval registry
   delegation/                    # Multi-agent roles and protocol
   build/                         # Build status, log, decisions, validation report
+  context-map.yaml               # Eager/lazy context map and token budgets
+  schemas/                       # JSON schemas for contract validation
 
 adapters/                        # Tool-specific compatibility layers
 scripts/                         # Validation, drift, sync, and generated-file checks
+.github/                         # CI, issue templates, and PR template
 ```
 
 ## Quick Start
@@ -59,8 +65,18 @@ cd Dev-Prod-Line
 Validate the scaffold:
 
 ```bash
+make validate
+```
+
+Or run individual checks:
+
+```bash
 scripts/validate-agentic-env.sh
 scripts/check-docs-drift.sh
+scripts/check-token-budget.sh
+scripts/check-version.sh
+scripts/check-schemas.sh
+scripts/check-markdown-links.sh
 scripts/check-advanced-agent-features.sh
 scripts/check-generated-files.sh
 ```
@@ -76,6 +92,14 @@ Start with these files:
 ## Using This Scaffold In Another Repository
 
 Use this repository as a reference implementation for creating a `.dev/` contract in another project.
+
+You can bootstrap another repository with:
+
+```bash
+scripts/init-dev-contract.sh /path/to/target-repo
+```
+
+By default, the installer expects a Git repository and refuses to overwrite existing files. Use `--dry-run` to preview, `--check` to validate an installed target, `--force` to back up and replace existing copied paths, and `--allow-non-git` only for bootstrap tests or new folders.
 
 When adapting it:
 
@@ -127,14 +151,8 @@ This repository is an advanced contract scaffold. It does not contain applicatio
 
 Before promoting this as a public community project, consider adding:
 
-- `LICENSE`
-- `CONTRIBUTING.md`
-- `CODE_OF_CONDUCT.md`
-- issue templates
-- pull request template
-- security policy
 - release/versioning policy
 
 ## License
 
-No license has been specified yet. Add a `LICENSE` file before encouraging broad public reuse or external contributions.
+Apache-2.0. See `LICENSE`.

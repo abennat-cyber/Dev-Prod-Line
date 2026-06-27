@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Classification",
+  "type": "object",
+  "required": ["schema_version", "status", "classes", "default_class", "unknown_class_action"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "classes": { "type": "object", "minProperties": 1 },
+    "default_class": { "type": "string" },
+    "unknown_class_action": { "type": "string" }
+  }
+}

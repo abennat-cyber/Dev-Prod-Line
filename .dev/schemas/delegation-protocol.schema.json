@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Delegation Protocol",
+  "type": "object",
+  "required": ["schema_version", "status", "roles", "delegation_allowed_when", "delegation_disallowed_when", "handoff_required_fields", "integration_rules"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "roles": { "type": "object", "minProperties": 1 },
+    "delegation_allowed_when": { "type": "array", "items": { "type": "string" } },
+    "delegation_disallowed_when": { "type": "array", "items": { "type": "string" } },
+    "handoff_required_fields": { "type": "array", "items": { "type": "string" } },
+    "integration_rules": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,41 @@
+schema_version: "1.0"
+status: "enabled"
+
+principle: "Load the smallest useful context first; lazy-load details only when the task requires them."
+
+eager_context:
+  - path: ".dev/manifest.yaml"
+    reason: "Defines the canonical contract and required files."
+    max_estimated_tokens: 1900
+  - path: ".dev/knowledge/index.md"
+    reason: "Default knowledge entry point."
+    max_estimated_tokens: 450
+  - path: ".dev/guardrails/global.md"
+    reason: "Global hard constraints."
+    max_estimated_tokens: 300
+  - path: ".dev/README.md"
+    reason: "Human-readable contract overview."
+    max_estimated_tokens: 650
+
+lazy_context:
+  standards:
+    path: ".dev/standards/"
+    load_when: "A task needs specific engineering, testing, security, documentation, observability, AI, or advanced-agent standards."
+  procedures:
+    path: ".dev/procedures/"
+    load_when: "A task maps to a repeatable workflow."
+  guardrails:
+    path: ".dev/guardrails/"
+    load_when: "A task touches a specific hard-constraint area."
+  knowledge:
+    path: ".dev/knowledge/"
+    load_when: "A task needs verified project facts beyond the index."
+  advanced_modules:
+    path: ".dev/model-routing/, .dev/token-compression/, .dev/marketplace/, .dev/delegation/"
+    load_when: "A task uses model routing, compression, plugin governance, or delegation."
+  evals:
+    path: ".dev/evals/"
+    load_when: "A task changes expected agent behavior or validation scenarios."
+
+total_eager_budget:
+  max_estimated_tokens: 3400

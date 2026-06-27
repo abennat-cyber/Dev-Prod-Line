@@ -11,6 +11,8 @@ AI tools are adapters. They may read and translate this contract, but they do no
 - `agents` execute the contract by following the relevant standards, procedures, guardrails, and knowledge entry points.
 - `scripts` validate the contract and check for drift.
 - Advanced modules define model routing, token compression, marketplace plugins, and multi-agent delegation without making any vendor canonical.
+- `.dev/context-map.yaml` defines eager and lazy context boundaries so agents avoid loading unnecessary context.
+- `.dev/schemas/` defines structural checks that CI can enforce strictly.
 
 ## Entry Points
 
@@ -19,6 +21,8 @@ AI tools are adapters. They may read and translate this contract, but they do no
 - Select one procedure from `.dev/procedures/` for the task at hand.
 - Apply all relevant hard constraints from `.dev/guardrails/`.
 - Validate with `scripts/validate-agentic-env.sh`.
+- Check context budget with `scripts/check-token-budget.sh`.
+- Use `make validate` as the standard contributor entry point.
 
 ## Advanced Modules
 
@@ -28,6 +32,10 @@ AI tools are adapters. They may read and translate this contract, but they do no
 - Multi-agent delegation: `.dev/delegation/`
 
 Validate advanced modules with `scripts/check-advanced-agent-features.sh`.
+
+## Distribution
+
+Use `scripts/init-dev-contract.sh <target-repository>` to copy this contract into another repository without overwriting existing files by default. Use `--dry-run` to preview and `--check` to validate an installed target.
 
 ## Repository Facts
 

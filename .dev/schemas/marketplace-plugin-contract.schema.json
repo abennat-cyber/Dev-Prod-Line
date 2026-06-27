@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marketplace Plugin Contract",
+  "type": "object",
+  "required": ["schema_version", "status", "required_fields", "risk_classes", "plugin_record_template"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "required_fields": { "type": "array", "items": { "type": "string" } },
+    "risk_classes": { "type": "object", "minProperties": 1 },
+    "plugin_record_template": { "type": "object" }
+  }
+}

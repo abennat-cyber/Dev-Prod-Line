@@ -4,7 +4,7 @@ Last updated: 2026-06-27
 
 ## Current phase
 
-- Phase: 11 - Advanced agent features
+- Phase: 12 - Public distribution hardening
 - Status: Complete
 
 ## Phase status
@@ -23,6 +23,8 @@ Last updated: 2026-06-27
 | 9 | Evals | Complete | Three vendor-neutral evals created. |
 | 10 | Finalization | Complete | Validation passed; build records updated. |
 | 11 | Advanced agent features | Complete | Model routing, token compression, marketplace plugins, and multi-agent delegation implemented as vendor-neutral contract modules. |
+| 12 | Public distribution hardening | Complete | Added license, contribution docs, context budget, schemas, CI, link checks, and installer. |
+| 13 | Industrial quality hardening | Complete | Added manifest-driven validation, deterministic reports, Makefile, broader schemas, contract tests, installer safety flags, versioning, and data classification. |
 
 ## Validation result
 
@@ -31,6 +33,11 @@ Last updated: 2026-06-27
 - `scripts/check-generated-files.sh`: PASS with conservative MVP scan and TODO for project-specific generated-file rules.
 - `scripts/sync-agent-adapters.sh --check`: PASS
 - Advanced feature validation: PASS.
+- Token budget validation: PASS.
+- Schema validation: PASS locally when optional dependencies are available; CI enforces strict schema validation.
+- Markdown link validation: PASS.
+- Contract validation tests: PASS.
+- Version validation: PASS.
 
 ## Notes
 

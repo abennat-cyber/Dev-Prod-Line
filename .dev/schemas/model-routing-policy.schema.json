@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Model Routing Policy",
+  "type": "object",
+  "required": ["schema_version", "status", "canonical_root", "principles", "capability_profiles", "routing_inputs", "decision_record_required_when", "fallback"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "canonical_root": { "type": "string" },
+    "principles": { "type": "array", "items": { "type": "string" } },
+    "capability_profiles": { "type": "object", "minProperties": 1 },
+    "routing_inputs": { "type": "array", "items": { "type": "string" } },
+    "decision_record_required_when": { "type": "array", "items": { "type": "string" } },
+    "fallback": { "type": "object" }
+  }
+}

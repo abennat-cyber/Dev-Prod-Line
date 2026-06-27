@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Context Map",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "principle",
+    "eager_context",
+    "lazy_context",
+    "total_eager_budget"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "principle": { "type": "string" },
+    "eager_context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "reason", "max_estimated_tokens"],
+        "properties": {
+          "path": { "type": "string" },
+          "reason": { "type": "string" },
+          "max_estimated_tokens": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "lazy_context": { "type": "object" },
+    "total_eager_budget": {
+      "type": "object",
+      "required": ["max_estimated_tokens"],
+      "properties": {
+        "max_estimated_tokens": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

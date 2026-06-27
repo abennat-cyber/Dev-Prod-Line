@@ -1,4 +1,4 @@
-schema_version: "1.0"
+schema_version: "1.1.0"
 canonical_root: ".dev"
 name: "vendor-agnostic-agentic-development-environment"
 status: "advanced-contract"
@@ -11,6 +11,7 @@ principles:
   - "No adapter is canonical."
   - "Unknown project facts must be marked UNKNOWN."
   - "Advanced agent features must remain vendor-neutral contract modules unless a repository explicitly adds a runtime adapter."
+  - "Context discipline and validation should live in scripts, schemas, and CI rather than repeated prompt text."
 
 adapter_policy:
   source_of_truth: ".dev"
@@ -50,11 +51,31 @@ advanced_features:
       - ".dev/delegation/roles.yaml"
 
 required_files:
+  root:
+    - ".dev/manifest.yaml"
+    - ".dev/README.md"
+    - ".dev/VERSION"
   build:
     - ".dev/build/status.md"
     - ".dev/build/log.md"
     - ".dev/build/decisions.md"
     - ".dev/build/validation-report.md"
+  context:
+    - ".dev/context-map.yaml"
+  schemas:
+    - ".dev/schemas/manifest.schema.json"
+    - ".dev/schemas/context-map.schema.json"
+    - ".dev/schemas/marketplace-registry.schema.json"
+    - ".dev/schemas/model-routing-policy.schema.json"
+    - ".dev/schemas/model-routing-evaluation-matrix.schema.json"
+    - ".dev/schemas/token-compression-policy.schema.json"
+    - ".dev/schemas/marketplace-plugin-contract.schema.json"
+    - ".dev/schemas/delegation-protocol.schema.json"
+    - ".dev/schemas/delegation-roles.schema.json"
+    - ".dev/schemas/eval.schema.json"
+    - ".dev/schemas/data-classification.schema.json"
+  security:
+    - ".dev/security/data-classification.yaml"
   standards:
     - ".dev/standards/engineering.md"
     - ".dev/standards/testing.md"
@@ -143,7 +164,29 @@ required_files:
     - "scripts/check-docs-drift.sh"
     - "scripts/check-generated-files.sh"
     - "scripts/check-advanced-agent-features.sh"
+    - "scripts/check-token-budget.sh"
+    - "scripts/check-schemas.sh"
+    - "scripts/check-markdown-links.sh"
+    - "scripts/init-dev-contract.sh"
+    - "scripts/check-version.sh"
+    - "scripts/test-contract-validation.sh"
+  community:
+    - "README.md"
+    - "LICENSE"
+    - "NOTICE"
+    - "CHANGELOG.md"
+    - "Makefile"
+    - "CONTRIBUTING.md"
+    - "CODE_OF_CONDUCT.md"
+    - "SECURITY.md"
+    - ".github/pull_request_template.md"
+    - ".github/ISSUE_TEMPLATE/bug_report.md"
+    - ".github/ISSUE_TEMPLATE/feature_request.md"
+    - ".github/ISSUE_TEMPLATE/config.yml"
+    - ".github/workflows/validate.yml"
 
 validation:
   command: "scripts/validate-agentic-env.sh"
   report: ".dev/build/validation-report.md"
+  local_mode: "soft optional dependencies"
+  ci_mode: "strict schema and shell validation"

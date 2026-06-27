@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Token Compression Policy",
+  "type": "object",
+  "required": ["schema_version", "status", "compression_triggers", "must_preserve", "must_not_compress_away", "compression_levels", "storage"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "type": "string" },
+    "compression_triggers": { "type": "array", "items": { "type": "string" } },
+    "must_preserve": { "type": "array", "items": { "type": "string" } },
+    "must_not_compress_away": { "type": "array", "items": { "type": "string" } },
+    "compression_levels": { "type": "object", "minProperties": 1 },
+    "storage": { "type": "object" }
+  }
+}
