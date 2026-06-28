@@ -25,7 +25,7 @@ while IFS= read -r -d '' file; do
       resolved="$(cd "$(dirname "$file")" && pwd)/$target"
     fi
     if [[ ! -e "$resolved" ]]; then
-      rel_file="${file#$ROOT_DIR/}"
+      rel_file="${file#"$ROOT_DIR"/}"
       echo "BROKEN: $rel_file -> $target"
       failures=$((failures + 1))
     fi

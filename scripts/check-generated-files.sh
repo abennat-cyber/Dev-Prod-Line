@@ -17,7 +17,9 @@ matches="$(find "$ROOT_DIR" \
 if [[ -z "$matches" ]]; then
   echo "- No generated-file markers found."
 else
-  echo "$matches" | sed 's#^#- #'
+  while IFS= read -r match; do
+    echo "- $match"
+  done <<< "$matches"
 fi
 
 echo

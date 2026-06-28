@@ -18,7 +18,7 @@ schema_pairs=(
 )
 
 for eval_file in "$ROOT_DIR"/.dev/evals/*.yml; do
-  schema_pairs+=("${eval_file#$ROOT_DIR/}|.dev/schemas/eval.schema.json")
+  schema_pairs+=("${eval_file#"$ROOT_DIR"/}|.dev/schemas/eval.schema.json")
 done
 
 if ! command -v python3 >/dev/null 2>&1; then
