@@ -1,0 +1,26 @@
+{
+  "description": "Claude Code adapter for .dev/hooks/policy.yaml. Copy the hooks block into .claude/settings.json (or reference it from a plugin). The canonical events and rules live in .dev/hooks/; this file only translates them.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .dev/hooks/guardrail_enforcer.py"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .dev/hooks/session_memory.py"
+          }
+        ]
+      }
+    ]
+  }
+}

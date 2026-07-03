@@ -1,4 +1,4 @@
-schema_version: "1.1.0"
+schema_version: "1.2.0"
 canonical_root: ".dev"
 name: "vendor-agnostic-agentic-development-environment"
 status: "advanced-contract"
@@ -25,6 +25,28 @@ adapter_policy:
     - "Locking the repository to a specific AI vendor or product."
 
 advanced_features:
+  hooks_lifecycle:
+    status: "enabled"
+    canonical_files:
+      - ".dev/hooks/README.md"
+      - ".dev/hooks/policy.yaml"
+      - ".dev/hooks/guardrail-rules.json"
+      - ".dev/hooks/guardrail_enforcer.py"
+      - ".dev/hooks/session_memory.py"
+  telemetry:
+    status: "enabled"
+    canonical_files:
+      - ".dev/telemetry/README.md"
+      - ".dev/telemetry/ledger.jsonl"
+  adapter_conformance:
+    status: "enabled"
+    canonical_files:
+      - ".dev/evals/conformance-tasks.yaml"
+      - ".dev/evals/conformance-matrix.md"
+  skill_ingestion:
+    status: "enabled"
+    canonical_files:
+      - ".dev/skills/ingest-external-skill/skill.md"
   model_routing:
     status: "enabled"
     canonical_files:

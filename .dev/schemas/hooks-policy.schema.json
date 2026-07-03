@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Hooks lifecycle policy",
+  "type": "object",
+  "required": ["schema_version", "status", "events", "constraints"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "status": { "enum": ["enabled", "disabled"] },
+    "principle": { "type": "string" },
+    "events": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["description", "action", "on_violation"],
+        "properties": {
+          "description": { "type": "string" },
+          "action": { "type": "string" },
+          "input": { "type": "string" },
+          "on_violation": { "enum": ["block", "never_block"] }
+        }
+      }
+    },
+    "adapter_policy": { "type": "object" },
+    "constraints": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "status": "enabled",
+  "comment": "Mechanically checkable subset of .dev/guardrails/. The markdown guardrails remain canonical; every rule references its source. JSON, not YAML, because rule patterns are regexes and must survive parsing byte for byte.",
+  "rules": [
+    {
+      "id": "no-subprocess-shell-true",
+      "source": ".dev/guardrails/security.md",
+      "applies_to": ["*.py"],
+      "pattern": "shell\\s*=\\s*True",
+      "severity": "block",
+      "message": "subprocess with shell=True risks command injection. Pass args as a list."
+    },
+    {
+      "id": "no-os-system",
+      "source": ".dev/guardrails/security.md",
+      "applies_to": ["*.py"],
+      "pattern": "os\\.system\\(",
+      "severity": "block",
+      "message": "os.system is disallowed. Use subprocess with a list of args."
+    },
+    {
+      "id": "no-hardcoded-secrets",
+      "source": ".dev/guardrails/data-and-privacy.md",
+      "applies_to": ["*"],
+      "pattern": "(api[_-]?key|secret|password|token)\\s*[:=]\\s*['\"][A-Za-z0-9_\\-]{16,}['\"]",
+      "severity": "block",
+      "message": "Possible hardcoded credential. Use environment variables or a secret store."
+    },
+    {
+      "id": "no-curl-pipe-shell",
+      "source": ".dev/guardrails/security.md",
+      "applies_to": ["*.sh", "*.md", "Makefile"],
+      "pattern": "(curl|wget)[^\\n|]*\\|\\s*(ba)?sh",
+      "severity": "block",
+      "message": "Piping downloads to a shell is disallowed. Download, verify, then execute."
+    },
+    {
+      "id": "no-eval-on-input",
+      "source": ".dev/guardrails/security.md",
+      "applies_to": ["*.py", "*.js", "*.ts"],
+      "pattern": "\\beval\\s*\\(",
+      "severity": "warn",
+      "message": "eval on dynamic input is dangerous. Prefer explicit parsing."
+    }
+  ]
+}

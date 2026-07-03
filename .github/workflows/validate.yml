@@ -36,3 +36,4 @@ jobs:
           scripts/check-advanced-agent-features.sh
           scripts/check-generated-files.sh
           scripts/test-contract-validation.sh
+          scripts/run-evals.sh

@@ -17,3 +17,5 @@ failure_modes:
   - "Dropping failed validation history."
   - "Omitting active user constraints."
   - "Letting compressed context override canonical files."
+automated_checks:
+  - "scripts/check-token-budget.sh"

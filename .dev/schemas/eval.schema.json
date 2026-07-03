@@ -2,13 +2,47 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Agent Eval",
   "type": "object",
-  "required": ["name", "description", "scenario", "expected_behavior", "guardrails_checked", "failure_modes"],
+  "required": [
+    "name",
+    "description",
+    "scenario",
+    "expected_behavior",
+    "guardrails_checked",
+    "failure_modes"
+  ],
   "properties": {
-    "name": { "type": "string" },
-    "description": { "type": "string" },
-    "scenario": { "type": "object" },
-    "expected_behavior": { "type": "array", "items": { "type": "string" } },
-    "guardrails_checked": { "type": "array", "items": { "type": "string" } },
-    "failure_modes": { "type": "array", "items": { "type": "string" } }
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "scenario": {
+      "type": "object"
+    },
+    "expected_behavior": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "guardrails_checked": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "failure_modes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "automated_checks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
   }
 }

@@ -18,3 +18,5 @@ failure_modes:
   - "Using an unapproved plugin."
   - "Ignoring data access."
   - "No rollback path."
+automated_checks:
+  - "scripts/check-schemas.sh"
