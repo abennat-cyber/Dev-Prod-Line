@@ -35,12 +35,12 @@ Advanced agent feature check passed.
 ```text
 # Token Budget Check
 
-OK: .dev/manifest.yaml estimated 1738 / 1900 tokens
+OK: .dev/manifest.yaml estimated 1900 / 1900 tokens
 OK: .dev/knowledge/index.md estimated 288 / 450 tokens
 OK: .dev/guardrails/global.md estimated 166 / 300 tokens
-OK: .dev/README.md estimated 548 / 650 tokens
+OK: .dev/README.md estimated 570 / 650 tokens
 
-Total eager estimate: 2740 / 3400 tokens
+Total eager estimate: 2924 / 3400 tokens
 OK: context ledger sentinel is session_state: none
 Token budget check passed.
 ```
@@ -82,7 +82,7 @@ Markdown link check passed.
 - Status: PASS
 
 ```text
-Version check passed: 1.1.0
+Version check passed: 1.2.0
 ```
 
 ## Advanced Feature Scope

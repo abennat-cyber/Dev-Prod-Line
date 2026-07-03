@@ -10,7 +10,7 @@ AI tools are adapters. They may read and translate this contract, but they do no
 - `adapters/` contains thin compatibility files for specific AI tools.
 - `agents` execute the contract by following the relevant standards, procedures, guardrails, and knowledge entry points.
 - `scripts` validate the contract and check for drift.
-- Advanced modules define model routing, token compression, marketplace plugins, and multi-agent delegation without making any vendor canonical.
+- Advanced modules define model routing, token compression, marketplace plugins, multi-agent delegation, hooks lifecycle enforcement, telemetry, adapter conformance, and external skill ingestion without making any vendor canonical.
 - `.dev/context-map.yaml` defines eager and lazy context boundaries so agents avoid loading unnecessary context.
 - `.dev/schemas/` defines structural checks that CI can enforce strictly.
 

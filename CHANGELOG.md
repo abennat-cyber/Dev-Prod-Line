@@ -18,6 +18,29 @@ versioning of `.dev/manifest.yaml`'s `schema_version`:
 Bump `schema_version` in the same change that alters the contract, and add a
 matching entry below.
 
+## [1.2.0] - 2026-07-03
+
+### Added
+
+- Hooks lifecycle module (`.dev/hooks/`): vendor-neutral event policy,
+  machine-readable guardrail rules, pre-edit enforcement script, and
+  session-end memory capture. Claude Code reference adapter in
+  `adapters/claude/hooks.json`.
+- Telemetry module (`.dev/telemetry/`): append-only JSONL run ledger,
+  schema, and `scripts/telemetry-report.sh`.
+- Runnable evals: `scripts/run-evals.sh` executes optional
+  `automated_checks` declared in eval files; token-compression and
+  marketplace evals now carry automated checks.
+- Adapter conformance suite: `.dev/evals/conformance-tasks.yaml` and
+  `.dev/evals/conformance-matrix.md`.
+- External skill ingestion governance: `.dev/skills/ingest-external-skill/`
+  and `scripts/ingest-skill.sh` (pinned commit, SHA-256, risk-marker scan,
+  registry record stub).
+- Release discipline: `MIGRATION.md` and `scripts/check-contract-version.sh`
+  for consumer-side drift detection.
+- Knowledge learning loop: `.dev/knowledge/lessons.md` populated by the
+  session-end hook, with promotion procedure.
+
 ## [Unreleased]
 
 ## [1.1.0] - 2026-06-27

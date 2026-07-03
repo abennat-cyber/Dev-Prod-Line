@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Telemetry ledger record",
+  "type": "object",
+  "required": ["ts", "event"],
+  "properties": {
+    "ts": { "type": "string" },
+    "event": { "type": "string" },
+    "decisions": { "type": "integer" },
+    "lessons": { "type": "integer" },
+    "usage": { "type": "object" },
+    "result": { "type": "string" }
+  }
+}

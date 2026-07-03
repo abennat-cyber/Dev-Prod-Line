@@ -18,6 +18,12 @@ eager_context:
     max_estimated_tokens: 650
 
 lazy_context:
+  hooks:
+    path: ".dev/hooks/"
+    load_when: "A task wires, modifies, or debugs lifecycle enforcement."
+  telemetry:
+    path: ".dev/telemetry/"
+    load_when: "A task reports on agent run metrics or extends the ledger."
   standards:
     path: ".dev/standards/"
     load_when: "A task needs specific engineering, testing, security, documentation, observability, AI, or advanced-agent standards."

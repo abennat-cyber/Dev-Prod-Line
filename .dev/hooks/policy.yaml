@@ -1,0 +1,26 @@
+schema_version: "1.0"
+status: "enabled"
+
+principle: "Guardrails are enforced at tool-call time, not only in review."
+
+events:
+  pre_edit:
+    description: "Fires before an agent writes or edits a repository file."
+    action: "python3 .dev/hooks/guardrail_enforcer.py"
+    input: "JSON on stdin with file_path and content fields."
+    on_violation: "block"
+  session_end:
+    description: "Fires when an agent session ends."
+    action: "python3 .dev/hooks/session_memory.py"
+    input: "JSON on stdin with optional summary, decisions, lessons, and usage fields."
+    on_violation: "never_block"
+
+adapter_policy:
+  canonical: ".dev/hooks/policy.yaml"
+  adapters_translate_events: true
+  adapters_must_not_add_rules: true
+
+constraints:
+  - "Hook scripts use Python 3 standard library only."
+  - "Hook scripts make no network calls."
+  - "Hook scripts write only to .dev/build/, .dev/knowledge/lessons.md, and .dev/telemetry/ledger.jsonl."
